@@ -72,28 +72,22 @@ export default function Testimonials() {
           ))}
           
           {/* BI Group Certificate */}
-          <Card className="gradient-brand text-white p-8 shadow-2xl transform hover:scale-105 transition-all duration-500 border-0 relative overflow-hidden animate-fadeInUp" style={{ animationDelay: '0.4s' }} data-testid="bi-group-certificate">
-            {/* Animated background */}
-            <div className="absolute inset-0 bg-gradient-to-r from-primary to-brand-teal-300 opacity-10 animate-pulse"></div>
-            
-            <CardContent className="p-0 relative">
-              <div className="text-center mb-8">
-                <div className="relative inline-block">
-                  <Award className="text-6xl text-yellow-400 mb-4 w-16 h-16 mx-auto animate-bounce" />
-                  <div className="absolute -top-2 -right-2 w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center">
-                    <span className="text-primary text-sm font-bold">✓</span>
-                  </div>
+          <Card className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 p-8 shadow-lg hover:shadow-xl transition-all duration-300" data-testid="bi-group-certificate">
+            <CardContent className="p-0">
+              <div className="text-center mb-6">
+                <div className="w-12 h-12 bg-blue-50 dark:bg-blue-900/20 rounded-lg flex items-center justify-center mx-auto mb-4">
+                  <Award className="w-6 h-6 text-tech-primary" />
                 </div>
-                <h3 className="text-2xl font-bold mb-2">Благодарственное письмо</h3>
-                <p className="text-brand-teal-100 font-medium">от компании BI Group</p>
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">Благодарственное письмо</h3>
+                <p className="text-gray-600 dark:text-gray-400 text-sm">от компании BI Group</p>
               </div>
               <p className="text-center mb-6 text-lg leading-relaxed">
                 “За высокое качество выполненных работ и профессиональный подход к реализации проектов”
               </p>
               <div className="text-center">
-                <div className="inline-flex items-center space-x-2 bg-white bg-opacity-20 px-6 py-3 rounded-xl backdrop-blur-sm border border-white/30">
-                  <Tag className="text-yellow-400 w-5 h-5" />
-                  <span className="font-semibold text-lg">Сертифицированный партнер</span>
+                <div className="inline-flex items-center space-x-2 bg-gray-50 dark:bg-gray-700 px-4 py-2 rounded-lg">
+                  <Tag className="text-tech-primary w-4 h-4" />
+                  <span className="text-sm font-medium text-gray-700 dark:text-gray-300">Сертифицированный партнер</span>
                 </div>
               </div>
             </CardContent>

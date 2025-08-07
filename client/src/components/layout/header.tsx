@@ -13,7 +13,7 @@ export default function Header() {
   const navItems = [
     { href: "/", label: "Главная" },
     { href: "/products", label: "Продукция" },
-    { href: "/about", label: "О компании" },
+    { href: "/about", label: "О нас" },
     { href: "/portfolio", label: "Портфолио" },
     { href: "/contact", label: "Контакты" },
   ];
@@ -21,25 +21,24 @@ export default function Header() {
   const NavLink = ({ href, label, onClick }: { href: string; label: string; onClick?: () => void }) => (
     <Link
       href={href}
-      className={`text-gray-700 dark:text-gray-200 hover:text-primary font-medium transition-colors duration-200 relative group ${
-        location === href ? "text-primary" : ""
+      className={`text-sm font-medium transition-colors ${
+        location === href
+          ? "text-tech-primary"
+          : "text-gray-600 dark:text-gray-300 hover:text-tech-primary"
       }`}
       onClick={onClick}
       data-testid={`nav-link-${href.replace('/', '') || 'home'}`}
     >
       {label}
-      <span className={`absolute -bottom-1 left-0 h-0.5 bg-primary transition-all duration-200 ${
-        location === href ? "w-full" : "w-0 group-hover:w-full"
-      }`}></span>
     </Link>
   );
 
   return (
-    <header className="bg-white shadow-lg sticky top-0 z-50 dark:bg-gray-900 dark:shadow-gray-800" data-testid="header">
+    <header className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl border-b border-gray-100 dark:border-gray-800 sticky top-0 z-50" data-testid="header">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center py-4">
-          <Link href="/" className="flex items-center space-x-4" data-testid="logo-link">
-            <div className="h-12 flex items-center">
+          <Link href="/" className="flex items-center space-x-3" data-testid="logo-link">
+            <div className="h-8 flex items-center">
               <img 
                 src={logoPath} 
                 alt="ХРОМ-KZ логотип" 
@@ -47,8 +46,8 @@ export default function Header() {
               />
             </div>
             <div>
-              <h1 className="text-2xl font-bold text-gray-800 dark:text-white">{COMPANY_INFO.name}</h1>
-              <p className="text-sm text-gray-600 dark:text-gray-300">{COMPANY_INFO.description}</p>
+              <div className="text-lg font-semibold text-tech-primary">{COMPANY_INFO.name}</div>
+              <div className="text-xs text-gray-500 dark:text-gray-400">Нержавеющая сталь</div>
             </div>
           </Link>
           

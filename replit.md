@@ -5,6 +5,19 @@ This is a full-stack web application for a Kazakhstani stainless steel manufactu
 # User Preferences
 
 Preferred communication style: Simple, everyday language.
+Design preferences: Clean minimalist style focused on steel manufacturing. Simple, functional design without IT company messaging.
+
+# Recent Changes
+
+## January 2025 - Clean Minimalist Design
+- Created clean minimalist design focused on steel manufacturing
+- Implemented simple color palette with blue accents for professional look
+- Restored traditional navigation: Products, About, Portfolio, Contacts
+- Enhanced hero section with company strengths (Quality, Experience, Service)
+- Updated product showcase with manufacturing advantages (Materials, Production, Control)
+- Simplified product cards with clean borders and minimal hover effects
+- Updated footer with traditional steel company messaging and contact information
+- Maintained modern typography and spacing for professional appearance
 
 # System Architecture
 

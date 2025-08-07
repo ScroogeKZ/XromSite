@@ -1,80 +1,134 @@
 import { Button } from "@/components/ui/button";
-import { Calculator, Phone } from "lucide-react";
+import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
+import { Code, Database, Cloud, Cpu, MessageCircle } from "lucide-react";
+import { useState } from "react";
 
 export default function Hero() {
+  const [contactOpen, setContactOpen] = useState(false);
+
   return (
     <section 
-      className="relative gradient-gray text-white py-24 lg:py-32 overflow-hidden"
+      className="relative bg-minimal-light dark:bg-minimal-dark min-h-screen flex items-center"
       data-testid="hero-section"
     >
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-5">
+      {/* Minimal geometric background */}
+      <div className="absolute inset-0 opacity-[0.02] dark:opacity-[0.05]">
         <div className="absolute inset-0" style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpolygon points='0,30 30,0 60,30 30,60'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000'%3E%3Crect width='1' height='1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
           backgroundSize: '60px 60px'
         }}></div>
       </div>
       
-      {/* Glassmorphism overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-brand-teal-900/20 to-brand-gray-900/40 backdrop-blur-sm"></div>
-      
-      {/* Floating geometric elements */}
-      <div className="absolute top-20 left-10 w-20 h-20 border-2 border-primary/30 rotate-45 animate-pulse hidden lg:block"></div>
-      <div className="absolute bottom-20 right-10 w-16 h-16 bg-primary/20 rotate-12 animate-bounce hidden lg:block"></div>
-      <div className="absolute top-1/2 right-1/4 w-12 h-12 border border-primary/40 rounded-full animate-ping hidden lg:block"></div>
-      
-      <div className="relative container mx-auto px-4">
-        <div className="max-w-5xl mx-auto text-center lg:text-left">
-          <div className="mb-6">
-            <span className="inline-block px-4 py-2 bg-primary/20 text-primary-foreground rounded-full text-sm font-medium mb-4 backdrop-blur-sm border border-primary/30">
-              ✨ Более 10 лет на рынке
-            </span>
+      <div className="container mx-auto px-4 py-20">
+        <div className="max-w-4xl mx-auto text-center">
+          {/* Clean badge */}
+          <div className="inline-flex items-center px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded-full text-sm font-medium text-gray-600 dark:text-gray-400 mb-8">
+            <Code className="w-4 h-4 mr-2 text-tech-primary" />
+            Качество и надежность с 2010 года
           </div>
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight" data-testid="hero-title">
-            Производство изделий из{" "}
-            <span className="bg-gradient-to-r from-primary to-brand-teal-300 bg-clip-text text-transparent">
-              нержавеющей стали
+
+          {/* Minimalist heading */}
+          <h1 className="text-4xl md:text-6xl font-light text-gray-900 dark:text-white mb-6 tracking-tight" 
+              data-testid="hero-title">
+            <span className="font-bold text-tech-primary">ХРОМ-KZ</span>
+            <span className="block text-2xl md:text-4xl mt-4 text-gray-600 dark:text-gray-300">
+              Нержавеющая сталь
             </span>
           </h1>
-          <p className="text-xl lg:text-2xl mb-8 text-gray-200 leading-relaxed max-w-3xl mx-auto lg:mx-0" data-testid="hero-description">
-            Качественные изделия для корпоративных и частных заказчиков в Астане. Лучшие материалы, современные технологии, разумные цены.
+
+          {/* Clean description */}
+          <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-12 max-w-2xl mx-auto leading-relaxed" 
+             data-testid="hero-description">
+            Производим качественные изделия из нержавеющей стали для строительства, 
+            архитектуры и промышленности. Точность, долговечность, красота.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 mb-12 justify-center lg:justify-start">
+
+          {/* Clean CTA */}
+          <div className="flex justify-center mb-16">
             <Button 
               size="lg" 
-              className="bg-primary hover:bg-primary/90 text-white px-8 py-4 text-lg font-semibold shadow-2xl hover:shadow-primary/25 transition-all duration-300 transform hover:scale-105"
-              data-testid="button-calculate"
+              onClick={() => setContactOpen(true)}
+              className="bg-tech-accent hover:bg-blue-600 text-white px-8 py-4 rounded-lg transition-colors"
+              data-testid="button-discuss"
             >
-              <Calculator className="mr-2 w-5 h-5" />
-              Получить расчет
-            </Button>
-            <Button 
-              variant="outline" 
-              size="lg" 
-              className="border-2 border-primary/50 text-white hover:bg-primary hover:text-white hover:border-primary px-8 py-4 text-lg font-semibold backdrop-blur-sm transition-all duration-300 transform hover:scale-105"
-              data-testid="button-contact"
-            >
-              <Phone className="mr-2 w-5 h-5" />
-              Связаться с нами
+              <MessageCircle className="mr-2 w-5 h-5" />
+              Обсудить проект
             </Button>
           </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto lg:mx-0">
-            <div className="glass rounded-2xl p-6 hover:scale-105 transition-all duration-300" data-testid="stat-experience">
-              <div className="text-4xl font-bold text-primary mb-2">10+</div>
-              <div className="text-gray-200 font-medium">лет на рынке</div>
+
+          {/* Key features */}
+          <div className="grid grid-cols-3 gap-8 max-w-2xl mx-auto">
+            <div className="text-center" data-testid="feature-quality">
+              <div className="w-12 h-12 bg-gray-100 dark:bg-gray-800 rounded-lg flex items-center justify-center mx-auto mb-3">
+                <Cpu className="w-6 h-6 text-tech-primary" />
+              </div>
+              <div className="text-sm font-medium text-gray-900 dark:text-white">Качество</div>
+              <div className="text-xs text-gray-500 dark:text-gray-400">ГОСТ стандарт</div>
             </div>
-            <div className="glass rounded-2xl p-6 hover:scale-105 transition-all duration-300" data-testid="stat-projects">
-              <div className="text-4xl font-bold text-primary mb-2">500+</div>
-              <div className="text-gray-200 font-medium">выполненных проектов</div>
+            
+            <div className="text-center" data-testid="feature-experience">
+              <div className="w-12 h-12 bg-gray-100 dark:bg-gray-800 rounded-lg flex items-center justify-center mx-auto mb-3">
+                <Database className="w-6 h-6 text-tech-primary" />
+              </div>
+              <div className="text-sm font-medium text-gray-900 dark:text-white">Опыт</div>
+              <div className="text-xs text-gray-500 dark:text-gray-400">10+ лет</div>
             </div>
-            <div className="glass rounded-2xl p-6 hover:scale-105 transition-all duration-300" data-testid="stat-support">
-              <div className="text-4xl font-bold text-primary mb-2">24/7</div>
-              <div className="text-gray-200 font-medium">техническая поддержка</div>
+            
+            <div className="text-center" data-testid="feature-service">
+              <div className="w-12 h-12 bg-gray-100 dark:bg-gray-800 rounded-lg flex items-center justify-center mx-auto mb-3">
+                <Cloud className="w-6 h-6 text-tech-primary" />
+              </div>
+              <div className="text-sm font-medium text-gray-900 dark:text-white">Сервис</div>
+              <div className="text-xs text-gray-500 dark:text-gray-400">24/7 поддержка</div>
             </div>
           </div>
         </div>
       </div>
+
+      {/* Contact Dialog */}
+      <Dialog open={contactOpen} onOpenChange={setContactOpen}>
+        <DialogContent className="sm:max-w-md">
+          <DialogTitle className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+            Обсудить проект
+          </DialogTitle>
+          <DialogDescription className="text-gray-600 dark:text-gray-400 mb-6">
+            Свяжитесь с нами для обсуждения вашего проекта
+          </DialogDescription>
+          
+          <div className="space-y-4">
+            <div className="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
+              <h4 className="font-medium text-gray-900 dark:text-white mb-2">Телефон</h4>
+              <p className="text-gray-700 dark:text-gray-300">+7 (727) 123-45-67</p>
+            </div>
+            
+            <div className="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
+              <h4 className="font-medium text-gray-900 dark:text-white mb-2">Email</h4>
+              <p className="text-gray-700 dark:text-gray-300">info@hrom-kz.com</p>
+            </div>
+            
+            <div className="p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
+              <h4 className="font-medium text-gray-900 dark:text-white mb-2">Адрес</h4>
+              <p className="text-gray-700 dark:text-gray-300">г. Алматы, ул. Промышленная 15</p>
+            </div>
+          </div>
+
+          <div className="flex gap-3 mt-6">
+            <Button 
+              className="flex-1 bg-tech-accent hover:bg-blue-600 text-white"
+              onClick={() => window.open('tel:+77271234567')}
+            >
+              Позвонить
+            </Button>
+            <Button 
+              variant="outline" 
+              className="flex-1"
+              onClick={() => window.open('mailto:info@hrom-kz.com')}
+            >
+              Написать
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
     </section>
   );
 }
